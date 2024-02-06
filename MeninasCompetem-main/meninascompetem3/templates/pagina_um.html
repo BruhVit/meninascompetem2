@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competições</title>
+    <style>
+        body {
+            background-color:  #ffffff;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .logo {
+            position: fixed;
+            width: 25%;
+            height: 25%;
+            top: 36%;
+            left: 12.5%;
+            z-index: 1000;
+        }
+
+        .bg2 {
+            background-color: #4b006f;
+            width: 50vw;
+            height: 100vh;
+            position: fixed;
+            box-shadow: 5px 5px 10px rgb(24, 0, 28, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .competicoes {
+            left:58%;
+            position: absolute;
+            font-weight: bold;
+            font-family: 'Arial Narrow Bold', sans-serif;
+            font-size: 1.2vw;
+            text-transform: uppercase;
+            color: #4b006f; /* Adicionando cor ao texto */
+        }
+
+        form {
+            text-align: center;
+            display: grid;
+            gap: 1vw;
+            margin-top: 2vw; /* Ajustando a margem superior do formulário */
+        }
+
+        label {
+            color: #4b006f; /* Adicionando cor ao texto das labels */
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.5vw;
+            margin-bottom: 1vw; /* Adicionando espaço entre os campos */
+            box-sizing: border-box; /* Garantindo que o padding não aumente a largura total */
+            border: 0.1vw solid #4b006f;
+            border-radius: 0.3vw;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        textarea {
+            resize: none;
+            height: 4vw;
+        }
+
+        fieldset {
+            border: none;
+            margin-top:1.9vw;
+            color:#4b006f;
+            position: absolute;
+        }
+
+        .quadradofield {
+            position: relative;
+            width: 33.5vw;
+            height: 20vw;
+            border: dotted;
+            color: #4b006f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px; /* Adapte o valor conforme necessário */
+        }
+
+        button {
+            position: absolute;
+            background-color: #4b006f;
+            color: #fff;
+            border: none;
+            padding: 0.7vw 13vw;
+            font-size: 1.2vw;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 20vw;
+            top: 104%;
+            left:-1%;
+            margin-bottom: 10vw !important;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        button:hover {
+            background-color: #33004c;
+        }
+
+        .botaovolta {
+            position: fixed;
+            background-color: #8f00d1;
+            color: #fff;
+            border: none;
+            padding: 0.7vw 13vw;
+            font-size: 1.2vw;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 0.3vw;
+            top: 90%;
+            left:5%;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .botaovolta:hover {
+            background-color: #33004c;
+        }
+
+        #nome {
+            width: calc(100% - 1vw);
+            padding: 0.5vw;
+            margin-bottom: 1vw;
+        }
+
+        #site {
+            width: calc(100% - 1vw);
+            padding: 0.5vw;
+            margin-bottom: 1vw;
+        }
+
+        #descricao {
+            width: calc(100% - 1vw);
+            padding: 0.5vw;
+            margin-bottom: 1vw;
+        }
+
+        #data_final,
+        #valor {
+            width: calc(100% - 1vw);
+            padding: 0.5vw;
+            margin-bottom: 1vw;
+        }
+
+        #categoria {
+            width: calc(100% - 1vw);
+            padding: 0.5vw;
+            margin-bottom: 1vw;
+        }
+
+        .quadrado{
+            width: 35vw;
+            height: auto;
+            background-color: #30004700;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bg2"></div>
+    <img src="{{ url_for('static', filename='logo.png')}}" class="logo" alt="logo">
+    <div class="competicoes">
+        <div class="quadrado">
+            <form action="{{ url_for('processar_formulario')}}" method="post">
+                <label for="nome">Nome da competição:</label>
+                <input type="text" id="nome" name="nome">
+
+                <label for="site">Site:</label>
+                <input type="text" id="site" name="site">
+
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao"></textarea>
+
+                <label for="data_final">Data final:</label>
+                <input type="date" id="data_final" name="data_final">
+
+                <label for="valor">Valor da competição:</label>
+                <input type="text" id="valor" name="valor">
+                <div class="quadradofield">
+                    <fieldset>
+                        <legend>SELECIONE O NÍVEL:</legend>
+                        <legend> </legend>
+                        <span>FUNDAMENTAL UM</span>
+                        <label><input type="checkbox" name="nivel" value="Fundamental1"></label><br>
+                        <span>FUNDAMENTAL DOIS</span>
+                        <label><input type="checkbox" name="nivel" value="Fundamental2"></label><br>
+                        <span>ENSINO MÉDIO</span>
+                        <label><input type="checkbox" name="nivel" value="EnsinoMedio"></label><br>
+                        <span>ABERTO A TODOS</span>
+                        <label><input type="checkbox" name="nivel" value="Aberto"></label><br>
+                    </fieldset>
+                </div>
+
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria">
+                    <option value="Matemática e Engenharia">Matemática e Engenharia</option>
+                    <option value="Ciências da Terra e Ecologia">Ciências da Terra e Ecologia:</option>
+                    <option value="Ciências Humanas e Linguagens">Ciências Humanas e Linguagens</option>
+                    <option value="Ciências da Natureza">Ciências da Natureza:</option>
+                    <option value="Criação de Projetos">Criação de Projetos:</option>
+                </select>
+
+                <button type="submit">CADASTRAR COMPETIÇÃO</button>
+            </form>
+        </div>
+
+        <button onclick="window.location.href='/'" class="botaovolta">VOLTAR PARA A PÁGINA INICIAL</button>
+    </div>
+</body>
+</html>

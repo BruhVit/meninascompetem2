@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Página Inicial</title>
+</head>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4; /* Cor de fundo da página */
+    }
+
+    .pagina-inicial {
+        text-align: center;
+        background-color: #fff; /* Cor de fundo da área central */
+        padding: 20px; /* Espaçamento interno da área central */
+        border-radius: 8px; /* Borda arredondada da área central */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    .titulo-principal {
+        color: #333; /* Cor do título principal */
+        margin-bottom: 20px; /* Espaçamento inferior do título */
+    }
+
+    .link-navegacao {
+        color: #ff00a6; /* Cor do link de navegação */
+        text-decoration: none;
+        font-weight: bold;
+        margin: 10px;
+        padding: 8px 16px;
+        border: 2px solid #ff00a6;
+        border-radius: 4px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .link-navegacao:hover {
+        background-color: #c1005a; /* Mudança de cor ao passar o mouse */
+        color: #fff; /* Mudança de cor ao passar o mouse */
+    }
+
+    .link-navegacao + .link-navegacao {
+        margin-left: 20px; /* Espaçamento entre os links de navegação */
+    }
+</style>
+<body class="pagina-inicial">
+    <h1 class="titulo-principal">Pag inicial </h1>
+    <a href="pagina_um.html" class="link-navegacao">Ir para Cadastro de competições</a>
+    <br>
+    <a href="pagina_dois.html" class="link-navegacao">Ir para Visualize competições</a>
+</body>
+</html>

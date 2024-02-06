@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meninas Competem - Non-Governmental Society</title>
+    <style>
+        body {
+            background-color: #54007c;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .back2{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background-color: #4b006f; /* Cor de fundo com transparência */
+            z-index: 999;
+            display: fixed;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            position: fixed;
+            width: 10%;
+            height: 10%;
+            bottom: 85%;
+            left: 3%;
+            z-index: 1000;
+        }
+
+        .brunae {
+            position: absolute;
+            width: 50%;
+            top: 20%;
+            left: -2%;
+        }
+
+        .trans-container {
+            position: absolute;
+            top: 25%;
+            left: 47%;
+            width: 50vw;
+            height: 50vh;
+            overflow: hidden;
+        }
+
+        .trans {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 4vw; /* Usando unidade relativa 'em' para ajustar ao zoom */
+            color: #ffffff;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 2em; /* Usando unidade relativa 'em' para espaço interno */
+            box-sizing: border-box;
+            text-align: center;
+            position: static;
+        }
+
+        .desc-container {
+            position: absolute;
+            top: 35%;
+            left: 57%;
+            width: 30vw;
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        .desc {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 1vw; /* Usando unidade relativa 'em' para ajustar ao zoom */
+            color: #ffffff;
+            width: 100%;
+            height: 100%;
+            margin-top: 10vw;
+            padding: 2em; /* Usando unidade relativa 'em' para espaço interno */
+            box-sizing: border-box;
+            text-align: center;
+            position: static;
+        }
+
+        .botao1,
+        .botao2{
+            position:absolute;
+            background-color: #4b006f; /* Cor de fundo */
+            color: #ffffff; /* Cor do texto */
+            border: none; /* Sem borda */
+            padding: 1vw 2.5vw; /* Espaçamento interno */
+            font-size: 1.3vw; /* Tamanho da fonte */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Efeito de transição suave */
+            border-radius: 10vw;
+        }
+
+        .botao3,
+        .botao4{
+            position:absolute;
+            background-color: #9700dc; /* Cor de fundo */
+            color: #ffffff; /* Cor do texto */
+            border: none; /* Sem borda */
+            padding: 1vw 2.5vw; /* Espaçamento interno */
+            font-size: 1.3vw; /* Tamanho da fonte */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Efeito de transição suave */
+            border-radius: 10vw;
+        }
+
+
+        /* Hover: Mudança de cor de fundo ao passar o mouse */
+        .botao1:hover,
+        .botao2:hover{
+            background-color: #33004c; /* Cor de fundo alterada no hover */
+        }
+
+        .botao3:hover,
+        .botao4:hover{
+            background-color: #33004c; /* Cor de fundo alterada no hover */
+        }
+
+        /* Estilos para os links dentro dos botões */
+        .link1,
+        .link2,
+        .link3,
+        .link4 {
+            text-decoration: none; /* Sem sublinhado nos links */
+            color: inherit; /* Herda a cor do texto do pai (botão) */
+        }
+
+        /* Centralizar o texto dentro dos botões */
+        .botao1, .botao2, .botao3, .botao4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .botao1{
+            z-index: 1000;
+            position: fixed;
+            left:52vw;
+            top: 6%;
+        }
+
+        .botao2{
+            z-index: 1000;
+            position: fixed;
+            left:77vw;
+            top: 6%;
+        }
+        .botao3{
+            z-index: 1000;
+            position: absolute;
+            left:60%;
+            top: 150%;
+            padding: 2vw 2.5vw;
+        }
+
+        .botao4{
+            z-index: 1000;
+            position: absolute;
+            left:60%;
+            top: 165%;
+            padding: 2.2vw 3vw;
+        }
+        
+        .comp{
+            position: relative;
+            top: 50.2vw;
+            width: 100%;
+            height: auto;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .ajuda{
+            position: absolute;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 3.5vw; /* Usando unidade relativa 'em' para ajustar ao zoom */
+            color: #ffffff;
+            z-index: 997;
+            top:120%;
+            right: 47%;
+            margin-left: 50%;
+            margin-right: 20%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="back2"></div>
+    <img src="{{ url_for('static', filename='image2.jpg')}}" class="brunae" alt="garotas">
+    <img src="{{ url_for('static', filename='logo.png')}}" class="logo" alt="logo">
+
+        <img src="{{ url_for('static', filename='comp2.png')}}" class="comp">
+    
+    <div class="trans-container">
+        <div class="trans">
+            CAPACITAÇÃO É TRANSFORMAÇÃO
+        </div>
+    </div>
+
+    <div class="desc-container">
+        <div class="desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+    </div>
+
+    <div class="ajuda">A SUA AJUDA PODE MUDAR O FUTURO DE MUITAS PESSOAS!</div>
+
+    
+
+    <nav>
+
+        <!-- Botão 2 -->
+        <button onclick="window.location.href='pagina_um.html'" class="botao3">
+            <span class="link2">CADASTRO DE COMPETIÇÕES</span>
+        </button>
+
+        <!-- Botão 3 -->
+        <button onclick="window.location.href='pagina_dois'" class="botao4">
+            <span class="link3">VISUALIZAR COMPETIÇÕES</span>
+        </button>
+
+        <a href="mailto:Girlupmeninascompetem@gmail.com">
+            <button class="botao1">
+                <span class="link3">CONTATO VIA E-MAIL</span>
+            </button>
+        </a>
+        <a href="https://www.instagram.com/meninascompetem/">
+            <button class="botao2">
+                <span class="link3">CONTATO VIA INSTAGRAM</span>
+            </button>
+        </a>
+    </nav>
+
+    <!-- Add the rest of your content here -->
+
+</body>
+</html>

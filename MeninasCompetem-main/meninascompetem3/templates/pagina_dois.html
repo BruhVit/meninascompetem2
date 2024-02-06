@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Dois</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .categorias {
+        text-align: center;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 10px;
+        background-color: #ff00a6;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #ff00a6;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #0056b3;
+    }
+
+    h2 {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    table, th, td {
+        border-color: #ff00a6;
+        text-align: center;
+        font-size: 12px;
+        padding: 7px;
+    }
+</style>
+<body>
+    <form id="filterForm">
+        <fieldset>
+            <legend>SELECIONE A CATEGORIA:</legend>
+            <label><input type="checkbox" name="categoria[]" value="Matemática e Engenharia"> Matemática e Engenharia</label><br>
+            <label><input type="checkbox" name="categoria[]" value="Ciências da Terra e Ecologia"> Ciências da Terra e Ecologia</label><br>
+            <label><input type="checkbox" name="categoria[]" value="Ciências Humanas e Linguagens"> Ciências Humanas e Linguagens</label><br>
+            <label><input type="checkbox" name="categoria[]" value="Ciências da Natureza"> Ciências da Natureza</label><br>
+            <label><input type="checkbox" name="categoria[]" value="Criação de Projetos"> Criação de Projetos</label><br>
+        </fieldset>
+        <button type="submit">Pesquisar por Categoria</button> <!-- Submit button for category filter -->
+    </form>
+
+    <form id="searchForm">
+        <input type="text" id="searchTerm" placeholder="Digite sua pesquisa...">
+        <button type="submit">Pesquisar</button> <!-- Submit button for search -->
+    </form>
+
+    <table id="resultsTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Nível</th>
+                <th>Valor</th>
+                <th>Data Final</th>
+                <th>Site</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            function updateResults(categorias, searchTerm) {
+                var data = {
+                    categoria: categorias,
+                    search_term: searchTerm
+                };
+                $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json',
+                    url: '/pagina_dois',
+                    data: JSON.stringify(data),
+                    success: function(data) {
+                        $('#resultsTable tbody').empty();
+                        data.forEach(function(item) {
+                            $('#resultsTable tbody').append('<tr><td>' + item.nome + '</td><td>' + item.descricao + '</td><td>' + item.nivel + '</td><td>' + item.valor + '</td><td>' + item.data_final + '</td><td>' + item.site + '</td></tr>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+        
+            $('#filterForm').submit(function(event) {
+                event.preventDefault();
+                var categorias = $('input[name="categoria[]"]:checked').map(function() {
+                    return $(this).val();
+                }).get();
+                var searchTerm = $('#searchTerm').val();
+                updateResults(categorias, searchTerm);
+            });
+        
+            $('#searchForm').submit(function(event) {
+                event.preventDefault();
+                var searchTerm = $('#searchTerm').val();
+                updateResults([], searchTerm); // Pass an empty array for categorias
+            });
+        });
+    </script>
+</body>
+</html>
+</body>
+</html>
